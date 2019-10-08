@@ -1,6 +1,7 @@
 import React, {useReducer} from 'react'
 import uuid from 'uuid'
 import ContactContext from "./contactContext";
+import ContactReducer from './contact-reducer'
 
 const ContactState = props => {
     const initialState = {
@@ -33,7 +34,7 @@ const ContactState = props => {
 
     }
 
-    const [state, dispatch] = useReducer(contact-reducer, initialState);
+    const [state, dispatch] = useReducer(ContactReducer, initialState);
 
     //Add Contact
 

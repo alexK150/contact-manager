@@ -1,8 +1,23 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import ContactContext from "../../context/contact/contactContext";
 
 const ContactForm = (props) => {
     const contactContext = useContext(ContactContext);
+
+    const {addContact, updateContact, clearCurrent, current} = contactContext;
+
+    useEffect(() => {
+        if (current !== null) {
+            setContact(current);
+        } else {
+            setContact({
+                name: '',
+                email: '',
+                phone: '',
+                type: 'personal'
+            })
+        }
+    }, [contactContext, current]);
 
     const [contact, setContact] = useState({
         name: '',
@@ -13,10 +28,15 @@ const ContactForm = (props) => {
 
     const {name, email, phone, type} = contact;
 
-    const onChange = (e)=>
-        setContact({ ...contact, [e.target.name]: e.target.value});
+    const onChange = (e) =>
+        setContact({...contact, [e.target.name]: e.target.value});
 
-    const onSubmit = (e)=>{
+    const onSubmit = (e) => {
+        if (current === null){
+            addContact(contact)
+        }else {
+            updateContact(contact);
+        }
         e.preventDefault();
         contactContext.addContact(contact);
         setContact({
@@ -27,9 +47,15 @@ const ContactForm = (props) => {
         })
     }
 
-    return(
+    const clearAll = () => {
+        clearCurrent();
+    }
+
+    return (
         <form onSubmit={onSubmit}>
-<h2 className="text-primary">Add Contact</h2>
+            <h2 className="text-primary">{current
+                ? 'Update Contact'
+                : 'Add Contact'}</h2>
             <input
                 type="text"
                 placeholder='name'
@@ -48,7 +74,7 @@ const ContactForm = (props) => {
                 name='phone'
                 value={phone}
                 onChange={onChange}/>
-                <h5>Contact type</h5>
+            <h5>Contact type</h5>
             <input
                 type="radio"
                 name='type'
@@ -66,9 +92,16 @@ const ContactForm = (props) => {
             <div>
                 <input
                     type="submit"
-                    value="Add Contact"
+                    value={current
+                        ? 'Update Contact'
+                        : 'Add Contact'}
                     className='btn btn-primary btn-block'/>
             </div>
+            {current && <div>
+                <button className="btn btn-light btn-block"
+                        onClick={clearAll}>Clear
+                </button>
+            </div>}
         </form>
     )
 }

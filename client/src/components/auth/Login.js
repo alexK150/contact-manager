@@ -36,7 +36,7 @@ const Login = (props) => {
                            onChange={onChange}/>
                 </div>
                 <input type="submit" value="Login" className='btn btn-primary btn-block'/>
-            </form>N
+            </form>
         </div>
     )
 }

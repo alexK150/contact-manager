@@ -37,7 +37,7 @@ router.post('/', [
                 email,
                 password
             })
-
+            //genSalt generates hash-version of password and returns a Promise
             const salt = await bcrypt.genSalt(10);
 
             user.password = await bcrypt.hash(password, salt);

@@ -19,7 +19,7 @@ const Contacts = (props) => {
                         (
                             //key property must to be moved to direct element
                             <CSSTransition
-                                key={contact.id}
+                                key={contact._id}
                                 timeout={500}
                                 className='item'
                             >
@@ -28,7 +28,7 @@ const Contacts = (props) => {
                         ))
                     : contacts.map(contact => (
                         <CSSTransition
-                            key={contact.id}
+                            key={contact._id}
                             timeout={500}
                             className='item'
                         >

@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import spinner from './spinner.gif';
 
 const Spinner = (props) => <>
@@ -6,6 +6,5 @@ const Spinner = (props) => <>
          alt='Loading...'
          style={{width: '200px', margin: 'auto', display: 'block'}}/>
 </>
-
 
 export default Spinner;

@@ -32,9 +32,9 @@ const ContactForm = (props) => {
         setContact({...contact, [e.target.name]: e.target.value});
 
     const onSubmit = (e) => {
-        if (current === null){
+        if (current === null) {
             addContact(contact)
-        }else {
+        } else {
             updateContact(contact);
         }
         e.preventDefault();

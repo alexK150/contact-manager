@@ -1,7 +1,7 @@
-import React, {useReducer} from 'react'
-import uuid from 'uuid'
+import React, {useReducer} from 'react';
+import uuid from 'uuid';
 import AlertContext from "./AlertContext";
-import AlertReducer from './alert-reducer'
+import AlertReducer from './alert-reducer';
 import {
     SET_ALERT,
     REMOVE_ALERT

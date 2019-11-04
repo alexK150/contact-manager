@@ -1,7 +1,7 @@
 import React from 'react';
 
 const About = (props) => {
-    return(
+    return (
         <div>
             <h1>About this App</h1>
             <p className="my-1">

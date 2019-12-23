@@ -31,20 +31,14 @@ const ContactForm = (props) => {
     const onChange = (e) =>
         setContact({...contact, [e.target.name]: e.target.value});
 
-    const onSubmit = (e) => {
+    const onSubmit = e => {
+        e.preventDefault();
         if (current === null) {
-            addContact(contact)
+            addContact(contact);
         } else {
             updateContact(contact);
         }
-        e.preventDefault();
-        contactContext.addContact(contact);
-        setContact({
-            name: '',
-            email: '',
-            phone: '',
-            type: 'personal'
-        })
+        clearAll();
     }
 
     const clearAll = () => {
